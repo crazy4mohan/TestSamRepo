@@ -26,4 +26,4 @@ jobs:
         comment-updates: false
         max-issues: 20
         tag-committer: false
-        branches-filter-regex: '^((?!master))'
+        branches-filter-regex: '^((?!main))'
