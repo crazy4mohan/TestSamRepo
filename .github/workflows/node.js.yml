@@ -6,8 +6,6 @@ on:
   push:
     branches:
       - main
-permissions: 
-  actions: read|write|
 jobs:
   housekeeping:
     name: Cleanup old branches
