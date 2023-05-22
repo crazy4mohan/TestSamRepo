@@ -1,0 +1,23 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: CLEAR OLD BRANCHES
+on:
+  schedule:
+    - cron: "5 4 * * *"
+jobs:
+  cleaning:
+    name: Cleanup old branches
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: clean
+        uses: beatlabs/delete-old-branches-action@v0.0.6
+        with:
+          repo_token: ${{ GH_Secert.GH_TOKEN }}
+          date: 1 hour ago
+          dry_run: true
+          delete_tags: true
+          minimum_tags: 5
+          extra_protected_branch_regex: master.*|main
